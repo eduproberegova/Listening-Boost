@@ -523,7 +523,7 @@ function buildGaps() {
     div.innerHTML = `
       <div class="gap-row">
         <span class="gap-num">${i+1}</span>
-        <span class="gap-sentence">${g.before}<input class="gap-input" id="gap-${i}" type="text" placeholder="…" autocomplete="off" autocorrect="off" spellcheck="false"><span class="gap-answer" id="gap-ans-${i">✓ ${g.answer}</span>${g.after}</span>
+        <span class="gap-sentence">${g.before}<input class="gap-input" id="gap-${i}" type="text" placeholder="…" autocomplete="off" autocorrect="off" spellcheck="false"><span class="gap-answer" id="gap-ans-${i}">✓ ${g.answer}</span>${g.after}</span>
       </div>`;
     c.appendChild(div);
   });
