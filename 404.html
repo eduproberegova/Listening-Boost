@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found | @eduproberegova</title>
+<meta name="theme-color" content="#F8395A">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;800;900&family=Playfair+Display:wght@900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #f7f9fc;
+    font-family: 'Manrope', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .top-stripe {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #F8395A 0%, #6fa8d6 100%);
+  }
+  .num {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(6rem, 20vw, 10rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, #F8395A, #B3D1ED);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1a1a2e;
+    margin-bottom: 10px;
+  }
+  .sub {
+    font-size: 15px;
+    font-weight: 600;
+    color: #7a8599;
+    max-width: 320px;
+    line-height: 1.6;
+    margin-bottom: 36px;
+  }
+  .btn {
+    background: #F8395A;
+    color: #fff;
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    border: none;
+    padding: 14px 36px;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 20px rgba(248,57,90,0.3);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(248,57,90,0.4); }
+  .author { margin-top: 40px; font-size: 13px; color: #F8395A; font-weight: 700; }
+</style>
+</head>
+<body>
+  <div class="top-stripe"></div>
+  <div class="num">404</div>
+  <div class="title">Page not found</div>
+  <p class="sub">Oops! This lesson seems to have moved. Go back to the homepage and find what you need.</p>
+  <a href="/" class="btn">← Back to Lessons</a>
+  <div class="author">@eduproberegova</div>
+</body>
+</html>
