@@ -1,12 +1,659 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=3d-food-quiz.html">
-<title>@eduproberegova – English Lessons</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Printed Food – B1 Lesson | @eduproberegova</title>
+<meta name="description" content="Watch a video about 3D printed food and test your English comprehension and grammar. B1 level lesson by @eduproberegova.">
+<meta name="theme-color" content="#F8395A">
+<meta property="og:title" content="3D Printed Food – B1 English Lesson">
+<meta property="og:description" content="Watch, learn vocabulary, and test yourself! by @eduproberegova 🎬">
+<meta property="og:image" content="og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="og-image.jpg">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="EduProberegova">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --f: #F8395A;
+  --f-light: #fde8ec;
+  --f-mid: #fbb3c0;
+  --b: #B3D1ED;
+  --b-dark: #6fa8d6;
+  --b-light: #eaf3fb;
+  --white: #fff;
+  --gray: #f4f6f9;
+  --text: #1a1a2e;
+  --muted: #7a8599;
+  --border: #e8edf4;
+  --green: #2e7d32;
+  --green-light: #e8f5e9;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #f7f9fc;
+  font-family: 'Manrope', sans-serif;
+  color: var(--text);
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.q-text, .option span:last-child, .gap-sentence, .card-back-translation,
+.card-back-example, .card-front-word { -webkit-user-select: text; user-select: text; }
+
+.top-stripe { height: 5px; background: linear-gradient(90deg, var(--f), var(--b-dark)); }
+
+.container { max-width: 800px; margin: 0 auto; padding: 0 20px 70px; }
+
+/* HEADER */
+header { text-align: center; padding: 44px 0 32px; }
+
+.level-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--b-light); color: var(--b-dark);
+  font-size: 11px; font-weight: 800; letter-spacing: 2px;
+  text-transform: uppercase; padding: 6px 16px; border-radius: 50px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 900; color: var(--text); line-height: 1.1; margin-bottom: 10px;
+}
+h1 span { color: var(--f); }
+
+.meta-row { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+.meta-pill { background: var(--white); border: 1.5px solid var(--border); color: var(--muted); font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 50px; }
+.author { font-size: 13px; font-weight: 700; color: var(--f); }
+
+/* SECTION CARD */
+.section-card { background: var(--white); border-radius: 20px; border: 1.5px solid var(--border); box-shadow: 0 2px 20px rgba(248,57,90,0.07); margin-bottom: 18px; overflow: hidden; }
+
+.section-toggle { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; cursor: pointer; user-select: none; -webkit-user-select: none; transition: background .2s; gap: 12px; }
+.section-toggle:hover { background: var(--gray); }
+.stl { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0; }
+
+.sicon { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.iv { background: var(--f-light); }
+.iq { background: var(--b-light); }
+.ig { background: #fff3e0; }
+.iv2 { background: #f3e8ff; }
+.ig2 { background: #e8f5e9; }
+
+.slabel { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--f); margin-bottom: 2px; }
+.slabel-g  { color: #e65100; }
+.slabel-v  { color: #7b2ff7; }
+.slabel-g2 { color: var(--green); }
+.stitle { font-size: 16px; font-weight: 800; color: var(--text); }
+
+.chevron { width: 30px; height: 30px; border-radius: 50%; background: var(--gray); display: flex; align-items: center; justify-content: center; transition: transform .3s, background .2s; flex-shrink: 0; font-size: 12px; color: var(--muted); }
+.section-card.open .chevron { transform: rotate(180deg); background: var(--f-light); color: var(--f); }
+
+.sbody { display: none; padding: 0 24px 24px; border-top: 1.5px solid var(--border); }
+.section-card.open .sbody { display: block; }
+
+/* VIDEO */
+.video-box { margin-top: 20px; border-radius: 14px; overflow: hidden; border: 2px solid var(--f-mid); box-shadow: 0 4px 24px rgba(248,57,90,0.12); position: relative; padding-top: 56.25%; background: #000; }
+.video-box iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+
+/* INTRO BOX */
+.intro-box { margin-top: 20px; padding: 13px 16px; border-radius: 12px; font-size: 13px; font-weight: 600; margin-bottom: 20px; }
+.ib-blue   { background: var(--b-light); color: var(--b-dark); }
+.ib-purple { background: #f3e8ff; color: #7b2ff7; }
+.ib-orange { background: #fff3e0; color: #e65100; }
+.ib-green  { background: var(--green-light); color: var(--green); }
+
+/* ══════════════════════════════
+   VOCABULARY FLIP CARDS
+══════════════════════════════ */
+.vocab-deck { position: relative; display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 20px; }
+
+.card-counter { text-align: center; font-size: 13px; font-weight: 700; color: var(--muted); margin-bottom: 14px; }
+.card-counter span { color: var(--f); font-weight: 900; }
+
+.flip-area { perspective: 1000px; width: 100%; max-width: 440px; height: 220px; cursor: pointer; }
+
+.flip-inner {
+  position: relative; width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  transition: transform .55s cubic-bezier(.4,0,.2,1);
+}
+
+.flip-area.flipped .flip-inner { transform: rotateY(180deg); }
+
+.card-face {
+  position: absolute; inset: 0;
+  border-radius: 18px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 24px 28px; gap: 8px;
+}
+
+.card-front {
+  background: var(--f);
+  box-shadow: 0 8px 32px rgba(248,57,90,0.28);
+}
+
+.card-front-word {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem; font-weight: 900; color: #fff;
+  text-align: center; line-height: 1.1;
+}
+
+.card-front-hint { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.65); letter-spacing: 1px; }
+
+.card-back {
+  background: var(--b);
+  box-shadow: 0 8px 32px rgba(179,209,237,0.4);
+  transform: rotateY(180deg);
+}
+
+.card-back-translation {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 900; color: var(--text);
+  text-align: center;
+}
+
+.card-back-example {
+  font-size: 13px; font-weight: 600; color: #3a5068;
+  text-align: center; line-height: 1.55;
+  font-style: italic;
+}
+
+.nav-btn {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  font-size: 16px; color: var(--muted);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all .18s; flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-btn:hover { border-color: var(--f); color: var(--f); background: var(--f-light); }
+.nav-btn:disabled { opacity: .3; cursor: default; }
+
+.vocab-progress { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-top: 14px; }
+.vocab-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: background .25s; }
+.vocab-dot.seen { background: var(--f-mid); }
+.vocab-dot.current { background: var(--f); }
+
+/* ══════════════════════════════
+   FILL IN THE GAPS
+══════════════════════════════ */
+.gap-block { margin-bottom: 16px; }
+
+.gap-num { display: inline-flex; align-items: center; justify-content: center; min-width: 26px; height: 26px; border-radius: 7px; background: #7b2ff7; color: #fff; font-size: 12px; font-weight: 900; margin-right: 8px; flex-shrink: 0; }
+
+.gap-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+
+.gap-sentence { font-size: 15px; font-weight: 600; color: var(--text); line-height: 1.6; }
+
+.gap-input {
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px; font-weight: 700;
+  color: var(--text);
+  width: 160px;
+  outline: none;
+  transition: border-color .18s, background .18s;
+  background: var(--white);
+  -webkit-user-select: text; user-select: text;
+}
+.gap-input:focus { border-color: #7b2ff7; background: #f9f5ff; }
+.gap-input.correct { border-color: var(--green); background: var(--green-light); color: var(--green); }
+.gap-input.wrong   { border-color: var(--f); background: var(--f-light); color: var(--f); }
+
+.gap-answer { font-size: 12px; font-weight: 700; color: var(--green); display: none; margin-left: 4px; }
+.gap-input.wrong ~ .gap-answer { display: inline; }
+
+/* ══════════════════════════════
+   QUIZ
+══════════════════════════════ */
+.question-block { margin-bottom: 18px; }
+.q-head { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 11px; }
+.q-num { display: inline-flex; align-items: center; justify-content: center; min-width: 27px; height: 27px; border-radius: 8px; font-size: 12px; font-weight: 900; flex-shrink: 0; }
+.num-comp { background: var(--f); color: #fff; }
+.num-gram { background: #FF7043; color: #fff; }
+.q-text { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.5; padding-top: 3px; }
+.options { display: flex; flex-direction: column; gap: 7px; padding-left: 37px; }
+
+.option { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 10px; border: 1.5px solid var(--border); background: var(--white); cursor: pointer; font-size: 14px; font-weight: 600; color: var(--text); transition: all .18s; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
+.option:hover    { border-color: var(--f); background: var(--f-light); color: var(--f); }
+.option.selected { border-color: var(--b-dark); background: var(--b-light); color: var(--b-dark); }
+.option.correct  { border-color: var(--green); background: var(--green-light); color: var(--green); }
+.option.wrong    { border-color: var(--f); background: var(--f-light); color: var(--f); }
+
+.opt-letter { display: inline-flex; align-items: center; justify-content: center; width: 23px; height: 23px; min-width: 23px; border-radius: 6px; font-size: 11px; font-weight: 900; background: var(--gray); color: var(--muted); transition: background .18s; flex-shrink: 0; }
+.option:hover    .opt-letter { background: var(--f-mid); color: #fff; }
+.option.selected .opt-letter { background: var(--b-dark); color: #fff; }
+.option.correct  .opt-letter { background: var(--green); color: #fff; }
+.option.wrong    .opt-letter { background: var(--f); color: #fff; }
+
+.divider { height: 1px; background: var(--border); margin: 14px 0; }
+
+/* SUBMIT ROW */
+.submit-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+
+.btn-check {
+  color: #fff; font-family: 'Manrope', sans-serif;
+  font-size: 14px; font-weight: 800; border: none;
+  padding: 12px 28px; border-radius: 50px; cursor: pointer;
+  transition: transform .15s, box-shadow .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-check:hover  { transform: translateY(-2px); }
+.btn-check:active { transform: scale(.97); }
+.bc-f  { background: var(--f);     box-shadow: 0 4px 18px rgba(248,57,90,.28); }
+.bc-f:hover  { box-shadow: 0 8px 28px rgba(248,57,90,.4); }
+.bc-o  { background: #FF7043;      box-shadow: 0 4px 18px rgba(255,112,67,.28); }
+.bc-o:hover  { box-shadow: 0 8px 28px rgba(255,112,67,.4); }
+.bc-p  { background: #7b2ff7;      box-shadow: 0 4px 18px rgba(123,47,247,.28); }
+.bc-p:hover  { box-shadow: 0 8px 28px rgba(123,47,247,.4); }
+
+.btn-retry { background: transparent; border: 1.5px solid var(--border); color: var(--muted); font-family: 'Manrope', sans-serif; font-size: 14px; font-weight: 700; padding: 11px 22px; border-radius: 50px; cursor: pointer; transition: all .18s; -webkit-tap-highlight-color: transparent; }
+.btn-retry:hover { border-color: var(--f); color: var(--f); }
+
+/* RESULT BOX */
+.result-box { display: none; margin-top: 16px; padding: 20px 22px; border-radius: 16px; text-align: center; animation: popIn .35s cubic-bezier(.34,1.56,.64,1); }
+@keyframes popIn { from { opacity:0; transform:scale(.9); } to { opacity:1; transform:scale(1); } }
+.rb-f  { background: linear-gradient(135deg, var(--f-light), var(--b-light)); border: 1.5px solid var(--f-mid); }
+.rb-o  { background: linear-gradient(135deg, #fff3e0, var(--b-light)); border: 1.5px solid #ffccbc; }
+.result-score { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; line-height: 1; }
+.rs-f { color: var(--f); }
+.rs-o { color: #e65100; }
+.result-total { font-size: 12px; font-weight: 700; color: var(--muted); margin-top: 4px; }
+.result-msg   { font-size: 15px; font-weight: 700; color: var(--text); margin-top: 10px; }
+
+/* FOOTER */
+footer { text-align: center; padding: 36px 0 0; font-size: 12px; color: var(--muted); font-weight: 600; }
+footer span { color: var(--f); font-weight: 800; }
+
+/* MOBILE */
+@media(max-width:600px) {
+  header { padding: 28px 0 20px; }
+  .section-toggle { padding: 16px 18px; }
+  .sbody { padding: 0 18px 20px; }
+  .options { padding-left: 0; }
+  .flip-area { height: 200px; }
+  .card-front-word { font-size: 1.6rem; }
+  .gap-input { width: 130px; }
+}
+</style>
 </head>
 <body>
-<script>window.location.href = '3d-food-quiz.html';</script>
+<div class="top-stripe"></div>
+<div class="container">
+
+<header>
+  <div class="level-tag">🎬 English B1 · Technology</div>
+  <h1>3D Printed <span>Food</span></h1>
+  <div class="meta-row">
+    <span class="meta-pill">Listening</span>
+    <span class="meta-pill">Vocabulary</span>
+    <span class="meta-pill">Comprehension</span>
+    <span class="meta-pill">Grammar B1</span>
+  </div>
+  <div class="author">designed by @eduproberegova</div>
+</header>
+
+<!-- 1. VIDEO -->
+<div class="section-card open" id="c-video">
+  <div class="section-toggle" onclick="tog('c-video')">
+    <div class="stl">
+      <div class="sicon iv">🎬</div>
+      <div><div class="slabel">Watch</div><div class="stitle">Video</div></div>
+    </div>
+    <div class="chevron">▼</div>
+  </div>
+  <div class="sbody">
+    <div class="video-box">
+      <iframe src="https://www.youtube.com/embed/2kCjSq_l-0s?rel=0&modestbranding=1"
+        title="3D Printed Food" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- 2. VOCABULARY CARDS -->
+<div class="section-card" id="c-vocab">
+  <div class="section-toggle" onclick="tog('c-vocab')">
+    <div class="stl">
+      <div class="sicon iv2">📚</div>
+      <div><div class="slabel slabel-v">Vocabulary · 10 words</div><div class="stitle">Flip Cards</div></div>
+    </div>
+    <div class="chevron">▼</div>
+  </div>
+  <div class="sbody">
+    <div class="intro-box ib-purple">💡 Tap a card to see the translation and example sentence.</div>
+    <div class="card-counter">Card <span id="vc-current">1</span> of <span id="vc-total">10</span></div>
+    <div class="vocab-deck">
+      <button class="nav-btn" id="vc-prev" onclick="vcNav(-1)" disabled>←</button>
+      <div class="flip-area" id="vc-card" onclick="vcFlip()">
+        <div class="flip-inner" id="vc-inner">
+          <div class="card-face card-front">
+            <div class="card-front-word" id="vc-word"></div>
+            <div class="card-front-hint">tap to flip 👆</div>
+          </div>
+          <div class="card-face card-back">
+            <div class="card-back-translation" id="vc-trans"></div>
+            <div class="card-back-example" id="vc-example"></div>
+          </div>
+        </div>
+      </div>
+      <button class="nav-btn" id="vc-next" onclick="vcNav(1)">→</button>
+    </div>
+    <div class="vocab-progress" id="vc-dots"></div>
+  </div>
+</div>
+
+<!-- 3. FILL IN THE GAPS -->
+<div class="section-card" id="c-gaps">
+  <div class="section-toggle" onclick="tog('c-gaps')">
+    <div class="stl">
+      <div class="sicon ig2">✏️</div>
+      <div><div class="slabel slabel-g2">Vocabulary Practice</div><div class="stitle">Fill in the Gaps</div></div>
+    </div>
+    <div class="chevron">▼</div>
+  </div>
+  <div class="sbody">
+    <div class="intro-box ib-green">✏️ Fill in each gap with the correct word from the vocabulary list.</div>
+    <div id="gaps-container"></div>
+    <div class="submit-row">
+      <button class="btn-check bc-p" onclick="checkGaps()">Check Answers ✓</button>
+      <button class="btn-retry" onclick="retryGaps()">Try Again ↺</button>
+    </div>
+    <div class="result-box rb-f" id="result-gaps">
+      <div class="result-score rs-f" id="score-gaps"></div>
+      <div class="result-total">correct answers</div>
+      <div class="result-msg" id="msg-gaps"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 4. COMPREHENSION -->
+<div class="section-card" id="c-comp">
+  <div class="section-toggle" onclick="tog('c-comp')">
+    <div class="stl">
+      <div class="sicon iq">🧠</div>
+      <div><div class="slabel">Test 1 · Comprehension</div><div class="stitle">Video Comprehension Quiz</div></div>
+    </div>
+    <div class="chevron">▼</div>
+  </div>
+  <div class="sbody">
+    <div class="intro-box ib-blue">📌 Watch the video first, then answer all 10 questions.</div>
+    <div id="quiz-comp"></div>
+    <div class="submit-row">
+      <button class="btn-check bc-f" onclick="checkQuiz('comp')">Check Answers ✓</button>
+      <button class="btn-retry" onclick="retryQuiz('comp')">Try Again ↺</button>
+    </div>
+    <div class="result-box rb-f" id="result-comp">
+      <div class="result-score rs-f" id="score-comp"></div>
+      <div class="result-total">correct answers</div>
+      <div class="result-msg" id="msg-comp"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 5. GRAMMAR -->
+<div class="section-card" id="c-gram">
+  <div class="section-toggle" onclick="tog('c-gram')">
+    <div class="stl">
+      <div class="sicon ig">📝</div>
+      <div><div class="slabel slabel-g">Test 2 · Grammar B1</div><div class="stitle">Past Tenses</div></div>
+    </div>
+    <div class="chevron">▼</div>
+  </div>
+  <div class="sbody">
+    <div class="intro-box ib-orange">📌 Choose the correct past tense form for each sentence.</div>
+    <div id="quiz-gram"></div>
+    <div class="submit-row">
+      <button class="btn-check bc-o" onclick="checkQuiz('gram')">Check Answers ✓</button>
+      <button class="btn-retry" onclick="retryQuiz('gram')">Try Again ↺</button>
+    </div>
+    <div class="result-box rb-o" id="result-gram">
+      <div class="result-score rs-o" id="score-gram"></div>
+      <div class="result-total">correct answers</div>
+      <div class="result-msg" id="msg-gram"></div>
+    </div>
+  </div>
+</div>
+
+<footer>© 2026 <span>@eduproberegova</span> · All rights reserved</footer>
+</div>
+
+<script>
+/* ── COPY PROTECTION ── */
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey||e.metaKey) && ['u','s','a','p'].includes(e.key.toLowerCase())) e.preventDefault();
+});
+
+/* ── TOGGLE ── */
+function tog(id) { document.getElementById(id).classList.toggle('open'); }
+
+/* ══════════════════════════════
+   VOCABULARY DATA
+══════════════════════════════ */
+const vocab = [
+  { word: "3D printing",  translation: "3D-друк",               example: "3D printing is changing the way we produce food." },
+  { word: "mainstream",   translation: "масовий,\nзагальноприйнятий", example: "This technology is becoming mainstream in many industries." },
+  { word: "researchers",  translation: "дослідники",            example: "Researchers are developing new ways to print food." },
+  { word: "groundbreaking", translation: "революційний,\nноваторський", example: "The invention was groundbreaking for the food industry." },
+  { word: "prosthetics",  translation: "протези",               example: "3D printers are also used to create prosthetics." },
+  { word: "edible",       translation: "їстівний",              example: "The printer can produce edible objects like chocolate." },
+  { word: "bakery",       translation: "пекарня",               example: "A modern bakery uses 3D printers for decoration." },
+  { word: "intricate",    translation: "складний,\nдеталізований", example: "The design of the food is very intricate." },
+  { word: "lasers",       translation: "лазери",                example: "Lasers can cook the food during printing." },
+  { word: "food waste",   translation: "харчові відходи",       example: "3D printing can help reduce food waste." },
+];
+
+/* ── VOCAB CARD STATE ── */
+let vcIdx = 0;
+
+function vcRender() {
+  const v = vocab[vcIdx];
+  document.getElementById('vc-word').textContent    = v.word;
+  document.getElementById('vc-trans').textContent   = v.translation;
+  document.getElementById('vc-example').textContent = '"' + v.example + '"';
+  document.getElementById('vc-current').textContent = vcIdx + 1;
+  document.getElementById('vc-inner').style.transition = 'none';
+  document.getElementById('vc-card').classList.remove('flipped');
+  setTimeout(() => { document.getElementById('vc-inner').style.transition = ''; }, 20);
+  document.getElementById('vc-prev').disabled = vcIdx === 0;
+  document.getElementById('vc-next').disabled = vcIdx === vocab.length - 1;
+  // dots
+  const dots = document.querySelectorAll('.vocab-dot');
+  dots.forEach((d, i) => {
+    d.classList.remove('seen','current');
+    if (i < vcIdx)  d.classList.add('seen');
+    if (i === vcIdx) d.classList.add('current');
+  });
+}
+
+function vcFlip() { document.getElementById('vc-card').classList.toggle('flipped'); }
+
+function vcNav(dir) {
+  vcIdx = Math.max(0, Math.min(vocab.length - 1, vcIdx + dir));
+  vcRender();
+}
+
+function vcInit() {
+  const dots = document.getElementById('vc-dots');
+  vocab.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'vocab-dot' + (i === 0 ? ' current' : '');
+    dots.appendChild(d);
+  });
+  document.getElementById('vc-total').textContent = vocab.length;
+  vcRender();
+}
+
+/* ══════════════════════════════
+   FILL IN THE GAPS DATA
+══════════════════════════════ */
+const gaps = [
+  { before: "", after: " is changing the way we produce food.",       answer: "3D printing" },
+  { before: "This technology is becoming ", after: " in many industries.", answer: "mainstream" },
+  { before: "", after: " are developing new ways to print food.",     answer: "Researchers" },
+  { before: "The invention was ", after: " for the food industry.",   answer: "groundbreaking" },
+  { before: "3D printers are also used to create ", after: ".",       answer: "prosthetics" },
+  { before: "The printer can produce ", after: " objects like chocolate.", answer: "edible" },
+  { before: "A modern ", after: " uses 3D printers for decoration.",  answer: "bakery" },
+  { before: "The design of the food is very ", after: ".",            answer: "intricate" },
+  { before: "", after: " can cook the food during printing.",         answer: "Lasers" },
+  { before: "3D printing can help reduce food ", after: ".",          answer: "waste" },
+];
+
+function buildGaps() {
+  const c = document.getElementById('gaps-container');
+  c.innerHTML = '';
+  gaps.forEach((g, i) => {
+    const div = document.createElement('div');
+    div.className = 'gap-block';
+    div.innerHTML = `
+      <div class="gap-row">
+        <span class="gap-num">${i+1}</span>
+        <span class="gap-sentence">${g.before}<input class="gap-input" id="gap-${i}" type="text" placeholder="…" autocomplete="off" autocorrect="off" spellcheck="false"><span class="gap-answer" id="gap-ans-${i">✓ ${g.answer}</span>${g.after}</span>
+      </div>`;
+    c.appendChild(div);
+  });
+}
+
+function checkGaps() {
+  let score = 0;
+  gaps.forEach((g, i) => {
+    const inp = document.getElementById(`gap-${i}`);
+    const ans = document.getElementById(`gap-ans-${i}`);
+    if (!inp) return;
+    inp.disabled = true;
+    const val = inp.value.trim().toLowerCase();
+    const correct = g.answer.toLowerCase();
+    if (val === correct) { inp.classList.add('correct'); score++; }
+    else { inp.classList.add('wrong'); if(ans) ans.style.display = 'inline'; }
+  });
+  showResult('gaps', score, gaps.length);
+}
+
+function retryGaps() {
+  document.getElementById('result-gaps').style.display = 'none';
+  buildGaps();
+}
+
+/* ══════════════════════════════
+   QUIZ DATA
+══════════════════════════════ */
+const compQ = [
+  { q: "What is the main topic of this video?",
+    opts: ["How plant-based meat is replacing regular meat","How restaurants are changing their menus","How NASA develops new cooking methods","How 3D printing is being used to make food"], ans: 3 },
+  { q: "What was the first object ever made with a 3D printer?",
+    opts: ["A piece of jewelry","A prosthetic hand","A toy car","An eyewash cup"], ans: 3 },
+  { q: "Why did NASA start researching 3D printed food?",
+    opts: ["It wanted to reduce food waste on Earth","It wanted to create pizzas for astronauts","It was looking for ways to recycle old food","It needed cheaper food for its employees"], ans: 1 },
+  { q: "What could the Fab at Home system, created at Columbia University, produce?",
+    opts: ["Edible objects made from ingredients like chocolate and peanut butter","Packaged snacks using recycled food waste","Meat products using plant-based materials","Frozen meals using a special cooling system"], ans: 0 },
+  { q: "What made the candies produced by Sugar Labs special?",
+    opts: ["They were made from plant-based ingredients","They were the first food items ever made with a 3D printer","They were so detailed that they were sold as ornaments","They were cooked using laser technology"], ans: 2 },
+  { q: "What problem did researchers at the Creative Machines Lab try to solve recently?",
+    opts: ["How to reduce food waste using 3D printing","How to make plant-based meat taste better","How to make 3D printers cheaper for home use","How to cook food while it is being printed"], ans: 3 },
+  { q: "How does laser-cooked 3D printed chicken compare to regularly cooked chicken?",
+    opts: ["It has more fat but less protein","It tastes very different from regular chicken","It is juicier and does not shrink as much","It is drier and smaller in size"], ans: 2 },
+  { q: "What is one health benefit of the plant-based \"alt-steaks\" made by Redefine Meat?",
+    opts: ["They have no cholesterol","They are made from recycled food materials","They contain more fat than regular steaks","They have no protein at all"], ans: 0 },
+  { q: "What does the restaurant Food Ink in the UK claim to offer?",
+    opts: ["A menu designed specifically for astronauts","A unique dining experience where everything is made using 3D printing","A service that turns food waste into new meals","A place where all food is made from plant-based ingredients"], ans: 1 },
+  { q: "What does the video suggest about the future of 3D printed food?",
+    opts: ["It is only useful for making desserts and candy","It is already the most popular way to cook food worldwide","It will definitely replace all traditional cooking methods","It may become more common as more people can access 3D printers"], ans: 3 }
+];
+
+const gramQ = [
+  { q: "I ___ her at the conference last year.",              opts: ["have met","met","was meeting","meet"], ans: 1 },
+  { q: "While we ___ dinner, the guests arrived.",           opts: ["had","were having","have had","have"], ans: 1 },
+  { q: "She ___ just ___ the email, so check your inbox.",   opts: ["did / send","has / sent","was / sending","have / sent"], ans: 1 },
+  { q: "When he ___ the door, he saw something strange.",    opts: ["was opening","opened","has opened","opens"], ans: 1 },
+  { q: "They ___ music when the teacher came in.",           opts: ["listened","were listening","have listened","listen"], ans: 1 },
+  { q: "I ___ this mistake before, so I won't do it again.", opts: ["made","have made","was making","make"], ans: 1 },
+  { q: "We ___ in this city since 2015.",                    opts: ["lived","have lived","were living","live"], ans: 1 },
+  { q: "While she ___ to work, she saw an accident.",        opts: ["walked","was walking","has walked","walks"], ans: 1 },
+  { q: "He ___ his wallet yesterday and had to borrow money.", opts: ["has lost","lost","was losing","loses"], ans: 1 },
+  { q: "I ___ never ___ such a good meal before.",           opts: ["did / eat","have / eaten","was / eating","do / eat"], ans: 1 }
+];
+
+const letters = ['A','B','C','D'];
+const sel = { comp: new Array(10).fill(null), gram: new Array(10).fill(null) };
+
+function buildQuiz(type, data) {
+  const c = document.getElementById('quiz-' + type);
+  c.innerHTML = '';
+  sel[type] = new Array(data.length).fill(null);
+  data.forEach((q, qi) => {
+    const b = document.createElement('div');
+    b.className = 'question-block';
+    b.innerHTML = `
+      <div class="q-head">
+        <div class="q-num num-${type}">${qi+1}</div>
+        <div class="q-text">${q.q}</div>
+      </div>
+      <div class="options" id="opts-${type}-${qi}">
+        ${q.opts.map((o,oi) => `
+          <div class="option" id="opt-${type}-${qi}-${oi}" onclick="selOpt('${type}',${qi},${oi})">
+            <span class="opt-letter">${letters[oi]}</span><span>${o}</span>
+          </div>`).join('')}
+      </div>
+      ${qi < data.length-1 ? '<div class="divider"></div>' : ''}`;
+    c.appendChild(b);
+  });
+}
+
+function selOpt(type, qi, oi) {
+  if (sel[type][qi] !== null)
+    document.getElementById(`opt-${type}-${qi}-${sel[type][qi]}`).classList.remove('selected');
+  sel[type][qi] = oi;
+  document.getElementById(`opt-${type}-${qi}-${oi}`).classList.add('selected');
+}
+
+function checkQuiz(type) {
+  const data = type === 'comp' ? compQ : gramQ;
+  let score = 0;
+  data.forEach((q, qi) => {
+    const opts = document.querySelectorAll(`#opts-${type}-${qi} .option`);
+    opts.forEach(el => { el.classList.remove('selected','correct','wrong'); el.style.pointerEvents = 'none'; });
+    if (sel[type][qi] === q.ans) { opts[sel[type][qi]].classList.add('correct'); score++; }
+    else { if (sel[type][qi] !== null) opts[sel[type][qi]].classList.add('wrong'); opts[q.ans].classList.add('correct'); }
+  });
+  showResult(type, score, data.length);
+}
+
+function retryQuiz(type) {
+  document.getElementById(`result-${type}`).style.display = 'none';
+  buildQuiz(type, type === 'comp' ? compQ : gramQ);
+}
+
+function showResult(type, score, total) {
+  const msgs = [[0,Math.floor(total*.3),"Keep trying! 💪"],[Math.floor(total*.3)+1,Math.floor(total*.5),"Good effort! 📖"],[Math.floor(total*.5)+1,Math.floor(total*.7),"Nice work! 👏"],[Math.floor(total*.7)+1,total-1,"Excellent! 🌟"],[total,total,"Perfect score! 🏆"]];
+  let msg = '';
+  for (const [min,max,text] of msgs) { if (score >= min && score <= max) { msg = text; break; } }
+  document.getElementById(`score-${type}`).textContent = score + '/' + total;
+  document.getElementById(`msg-${type}`).textContent = msg;
+  const box = document.getElementById(`result-${type}`);
+  box.style.display = 'block';
+  box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+/* ── INIT ── */
+vcInit();
+buildGaps();
+buildQuiz('comp', compQ);
+buildQuiz('gram', gramQ);
+</script>
 </body>
 </html>
