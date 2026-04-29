@@ -428,6 +428,24 @@ footer span { color: var(--f); font-weight: 800; }
   </div>
 </div>
 
+<!-- SEND RESULTS -->
+<div id="send-results-wrap" style="display:none; margin-bottom:24px;">
+  <div style="background:#fff;border-radius:20px;border:1.5px solid #e8edf4;box-shadow:0 2px 20px rgba(248,57,90,0.07);padding:28px 24px;text-align:center;">
+    <div style="font-size:32px;margin-bottom:10px;">🎉</div>
+    <div style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:#1a1a2e;margin-bottom:6px;">Well done! All sections completed!</div>
+    <div style="font-size:13px;font-weight:600;color:#7a8599;margin-bottom:20px;">Enter your name and send your results to the teacher.</div>
+    <div id="scores-summary" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;"></div>
+    <input id="student-name" type="text" placeholder="Your name…"
+      style="-webkit-user-select:text;user-select:text;display:block;width:100%;max-width:320px;margin:0 auto 14px;padding:12px 16px;border:1.5px solid #e8edf4;border-radius:12px;font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;color:#1a1a2e;outline:none;"
+      onfocus="this.style.borderColor='#F8395A'" onblur="this.style.borderColor='#e8edf4'">
+    <button onclick="sendResults()"
+      style="background:#F8395A;color:#fff;font-family:'Manrope',sans-serif;font-size:15px;font-weight:800;border:none;padding:14px 36px;border-radius:50px;cursor:pointer;box-shadow:0 4px 18px rgba(248,57,90,0.3);">
+      📨 Send Results to Teacher
+    </button>
+    <div id="send-status" style="margin-top:14px;font-size:14px;font-weight:700;display:none;"></div>
+  </div>
+</div>
+
 <footer>© 2026 <span>@eduproberegova</span> · All rights reserved</footer>
 </div>
 
@@ -542,6 +560,8 @@ function checkGaps() {
     else { inp.classList.add('wrong'); if(ans) ans.style.display = 'inline'; }
   });
   showResult('gaps', score, gaps.length);
+  done.gaps = true;
+  checkCompletion();
 }
 
 function retryGaps() {
@@ -631,6 +651,8 @@ function checkQuiz(type) {
     else { if (sel[type][qi] !== null) opts[sel[type][qi]].classList.add('wrong'); opts[q.ans].classList.add('correct'); }
   });
   showResult(type, score, data.length);
+  done[type] = true;
+  checkCompletion();
 }
 
 function retryQuiz(type) {
@@ -648,6 +670,106 @@ function showResult(type, score, total) {
   box.style.display = 'block';
   box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
+
+/* ── COMPLETION TRACKING ── */
+const done = { gaps: false, comp: false, gram: false };
+
+function checkCompletion() {
+  if (done.gaps && done.comp && done.gram) {
+    const wrap = document.getElementById('send-results-wrap');
+    wrap.style.display = 'block';
+    wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    // Build scores summary pills
+    const summary = document.getElementById('scores-summary');
+    summary.innerHTML = '';
+    const pills = [
+      { label: 'Fill in the Gaps', id: 'gaps', color: '#7b2ff7' },
+      { label: 'Comprehension',    id: 'comp', color: '#F8395A' },
+      { label: 'Grammar B1',       id: 'gram', color: '#FF7043' },
+    ];
+    pills.forEach(p => {
+      const score = document.getElementById(`score-${p.id}`).textContent || '–';
+      const pill = document.createElement('div');
+      pill.style.cssText = `background:${p.color}18;border:1.5px solid ${p.color}44;border-radius:12px;padding:10px 16px;font-size:13px;font-weight:800;color:${p.color};`;
+      pill.innerHTML = `${p.label}<br><span style="font-size:1.3rem;font-family:'Playfair Display',serif;">${score}</span>`;
+      summary.appendChild(pill);
+    });
+  }
+}
+
+/* ── SEND RESULTS VIA FORMSPREE ── */
+async function sendResults() {
+  const name = document.getElementById('student-name').value.trim();
+  if (!name) {
+    const inp = document.getElementById('student-name');
+    inp.style.borderColor = '#F8395A';
+    inp.placeholder = 'Please enter your name first!';
+    inp.focus();
+    return;
+  }
+
+  // Collect all answers
+  const gapAnswers = gaps.map((g, i) => {
+    const inp = document.getElementById(`gap-${i}`);
+    return `${i+1}. "${g.before}[${inp ? inp.value || '–' : '–'}]${g.after}" (correct: ${g.answer})`;
+  }).join('\n');
+
+  const compAnswers = compQ.map((q, qi) => {
+    const chosen = sel.comp[qi] !== null ? letters[sel.comp[qi]] : '–';
+    const correct = letters[q.ans];
+    const ok = sel.comp[qi] === q.ans ? '✅' : '❌';
+    return `${ok} Q${qi+1}: ${chosen} (correct: ${correct})`;
+  }).join('\n');
+
+  const gramAnswers = gramQ.map((q, qi) => {
+    const chosen = sel.gram[qi] !== null ? letters[sel.gram[qi]] : '–';
+    const correct = letters[q.ans];
+    const ok = sel.gram[qi] === q.ans ? '✅' : '❌';
+    return `${ok} Q${qi+1}: ${chosen} (correct: ${correct})`;
+  }).join('\n');
+
+  const scoreGaps = document.getElementById('score-gaps').textContent;
+  const scoreComp = document.getElementById('score-comp').textContent;
+  const scoreGram = document.getElementById('score-gram').textContent;
+
+  const status = document.getElementById('send-status');
+  status.style.display = 'block';
+  status.style.color = '#7a8599';
+  status.textContent = 'Sending… ⏳';
+
+  try {
+    const res = await fetch('https://formspree.io/f/xaqarvll', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        student: name,
+        lesson: '3D Printed Food – B1',
+        date: new Date().toLocaleDateString('uk-UA'),
+        score_gaps: scoreGaps,
+        score_comprehension: scoreComp,
+        score_grammar: scoreGram,
+        fill_in_gaps: gapAnswers,
+        comprehension: compAnswers,
+        grammar: gramAnswers,
+      })
+    });
+
+    if (res.ok) {
+      status.style.color = '#2e7d32';
+      status.textContent = '✅ Results sent! Your teacher will review them.';
+      document.getElementById('student-name').disabled = true;
+    } else {
+      throw new Error();
+    }
+  } catch {
+    status.style.color = '#F8395A';
+    status.textContent = '❌ Something went wrong. Try again.';
+  }
+}
+
+/* ── OVERRIDE showResult TO TRACK COMPLETION ── */
+const _showResult = showResult;
 
 /* ── INIT ── */
 vcInit();
