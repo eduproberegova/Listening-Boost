@@ -2,7 +2,7 @@
   "name": "EduProberegova – English Lessons",
   "short_name": "EduProberegova",
   "description": "Interactive English lessons with video, comprehension and grammar quizzes.",
-  "start_url": "/",
+  "start_url": "./3d-food-quiz.html",
   "display": "standalone",
   "background_color": "#f7f9fc",
   "theme_color": "#F8395A",
@@ -10,13 +10,13 @@
   "lang": "en",
   "icons": [
     {
-      "src": "icons/icon-192.png",
+      "src": "icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icons/icon-512.png",
+      "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
